@@ -5,8 +5,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin;
-import com.mrousavy.camera.frameprocessor.FrameProcessorPluginRegistry;
+import com.mrousavy.camera.frameprocessors.FrameProcessorPlugin;
+import com.mrousavy.camera.frameprocessors.FrameProcessorPluginRegistry;
+import com.mrousavy.camera.frameprocessors.VisionCameraProxy;
 import com.visioncamerabase64plugin.VisionCameraBase64Plugin;
 
 import java.util.Collections;
@@ -16,7 +17,7 @@ public class VisionCameraBase64PluginPackage implements ReactPackage {
   static {
     FrameProcessorPluginRegistry.addFrameProcessorPlugin(
             "frameToBase64",
-            options -> new VisionCameraBase64Plugin(options)
+            (proxy, options) -> new VisionCameraBase64Plugin(proxy, options)
     );
   }
 
